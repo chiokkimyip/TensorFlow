@@ -286,3 +286,29 @@ def calculate_results(y_true, y_pred):
                   "recall": model_recall,
                   "f1": model_f1}
   return model_results
+
+# Creating a function that would grab the image from a dataset, visualize and gives the prediction of it. 
+
+def dataset_visualizer(dataset , model):
+  '''
+  Arguments: 
+    dataset --> `tf.data.Dataset` object with (image , label) tuples 
+    model --> the trained model 
+
+  Returns: 
+    Visualizae the image from the dataset and the prediction class of the image. 
+  '''
+  image_batch , label_batch = dataset.as_numpy_iterator().next() 
+  batch_prob = [model.predict(tf.expand_dims(img , axis = 0)) for img in image_batch]
+  batch_preds = [class_names[np.argmax(prob)] for prob in batch_prob]
+
+  plt.figure(figsize= (10 , 10))
+  for i in range(4):
+    ax = plt.subplot(2 , 2 , i + 1)
+    if class_names[np.argmax(label_batch[i])] == batch_preds[i]:
+      title_color = 'g'
+    else:
+      title_color = 'r'
+    plt.imshow(image_batch[i].astype('uint8'))
+    plt.title(f"actual: {class_names[np.argmax(label_batch[i])]}, pred: {batch_preds[i]}, prob: {batch_prob[i].max():.2f}" , c = title_color)
+    plt.axis('off')
