@@ -314,14 +314,14 @@ def dataset_visualizer(dataset , model):
     plt.axis('off')
     
 def autolabel(rects):
-    """
-    Attach a text label above each bar displaying its height
-    https://gist.github.com/ptbrowne/3fcae7fb6e9db3960ff3af0a9d6ecffb
-    How to call: ax = bar() --> autolabel(ax) --> plt.show()
-    """
-    for rect in rects:
-        width = rect.get_width()
-        ax.text(rect.get_x() + rect.get_width() / 2, rect.get_y() + rect.get_height()/2.,
-                '%.2f' % width,
-                ha='center', va='center', color='white')
+  """
+  Attach a text label above each bar displaying its height
+  https://gist.github.com/ptbrowne/3fcae7fb6e9db3960ff3af0a9d6ecffb
+  How to call: ax = bar() --> autolabel(ax) --> plt.show()
+  """
+  for rect in rects:
+      width = rect.get_width()
+      ax.text(rect.get_x() + rect.get_width() / 2, rect.get_y() + rect.get_height()/2.,
+              '%.2f' % width,
+              ha='center', va='center', color='white')
     
