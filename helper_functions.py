@@ -312,16 +312,15 @@ def dataset_visualizer(dataset , model):
     plt.imshow(image_batch[i].astype('uint8'))
     plt.title(f"actual: {class_names[np.argmax(label_batch[i])]}, pred: {batch_preds[i]}, prob: {batch_prob[i].max():.2f}" , c = title_color)
     plt.axis('off')
-    
+ 
 def autolabel(rects):
-  """
-  Attach a text label above each bar displaying its height
-  https://gist.github.com/ptbrowne/3fcae7fb6e9db3960ff3af0a9d6ecffb
-  How to call: ax = bar() --> autolabel(ax) --> plt.show()
-  """
-  for rect in rects:
-      width = rect.get_width()
-      ax.text(rect.get_x() + rect.get_width() / 2, rect.get_y() + rect.get_height()/2.,
-              '%.2f' % width,
-              ha='center', va='center', color='white')
-    
+    """
+    Attach a text label above each bar displaying its height
+    https://gist.github.com/ptbrowne/3fcae7fb6e9db3960ff3af0a9d6ecffb
+    How to call: ax = bar() --> autolabel(ax) --> plt.show()
+    """
+    for rect in rects:
+        width = rect.get_width()
+        ax.text(rect.get_x() + rect.get_width() / 2, rect.get_y() + rect.get_height()/2.,
+                '%.2f' % width,
+                ha='center', va='center', color='white')
